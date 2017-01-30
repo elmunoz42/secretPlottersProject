@@ -8,8 +8,12 @@ $(document).ready(function() {
 
   });
   // go submit
+  
   $("#fruits-of-diversity").click(function(event){
     $(".find-plot-div").hide();
     $(".plot-site").show();
   });
+  // click on map location
+
+
 });
