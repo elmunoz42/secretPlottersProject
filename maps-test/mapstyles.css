@@ -1,0 +1,28 @@
+/*#map {
+  height: 400px;
+  width: 100%;
+ }*/
+ html, body {
+
+   height: 100%;
+   width: 100%;
+   /*margin: 30px;*/
+ }
+ #map {
+   display: block;
+   align-self: center;
+   height: 30%;
+   width: 80%;
+   margin-left: 10%;
+   margin-right: 10%;
+
+ }
+ .jumbotron {
+   margin-left: 10%;
+   margin-right: 10%;
+   margin-top: 10%;
+
+ }
+ .garden-blog {
+   margin-top: 4%;
+ }
