@@ -39,8 +39,11 @@ Web-app that game-ifies guerrilla gardening with map functionality, leveling sys
 ## Specifications
 |Desired Behavior | Example Input | Example Output |
 |:----------------|:-------------:|---------------:|
-|1) User chooses to find a secretPlot and is shown a map| select "find a secretPlot" press: "Go!"| display: map with secretPlot location|
-|2) User picks out a secretPlot from the map| click on plot button | secretPlot description and pictures blog show up |
+|1) User chooses to find a secretPlot and is shown a map| select: "find a secretPlot" press: "Go!"| display: map with secretPlot location|
+|2) User picks out a secretPlot from the map| click on plot button | secret Plot description and pictures blog show up |
+|3) User chooses to create a secretPlot and gets directed to a form| select: "create a secretPlot" press: "Go!"| create-a-plot form appears|
+
+
 
 
 * End specifications
