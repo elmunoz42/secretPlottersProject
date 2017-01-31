@@ -1,44 +1,17 @@
+
+
 function initMap() {
 
-  // function initMap() {
-  //
-    var mapNeighbourhood = {
-      center: new google.maps.LatLng(45.590604, -122.711207),
-      zoom: 10,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
+var mapNeighbourhood = {
+    center: new google.maps.LatLng(45.590604, -122.711207),
+    zoom: 10,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+};
 
 
 
-    var map = new google.maps.Map(document.getElementById('map'), mapNeighbourhood);
+var map = new google.maps.Map(document.getElementById('map'), mapNeighbourhood);
 
-    /// marker clusterer
-    var label=['ABCDEFGHIJKLMNOPQRSTUVWXYZ']
-    var markers = locations.map(function(location, i) {
-      return new google.maps.Marker({
-        position: location,
-        label: labels[i % labels.length]
-      });
-    });
-    var locations = [
-      {lat: 45.553110, lng:-122.646701},
-      {lat: 45.590604, lng:-122.711207},
-    ]
-
-  ///map clustere
-// var mapNeighbourhood = {
-//     center: new google.maps.LatLng(45.590604, -122.711207),
-//     zoom: 10,
-//     mapTypeId: google.maps.MapTypeId.ROADMAP
-// };
-
-//
-//
-// var map = new google.maps.Map(document.getElementById('map'), mapNeighbourhood);
-//
-//
-//
-//
 var mapFruitsOfDiversity = {
     position: new google.maps.LatLng(45.590604, -122.711207),
     map: map
@@ -65,13 +38,15 @@ var infoWindowFOD = new google.maps.InfoWindow(infoWindowOptionsFOD);
 google.maps.event.addListener(marker,'click',function(e){
 
   infoWindowFOD.open(map, marker);
-
+  $("#plot-title").text(infoWindowFOD.content);
+  $("#plot-description").text("lorem ipsum gardening");
 });
 var infoWindowSCO = new google.maps.InfoWindow(infoWindowOptionsSCO);
 google.maps.event.addListener(marker2,'click',function(e){
 
   infoWindowSCO.open(map, marker2);
-
+  $("#plot-title").text(infoWindowSCO.content);
+$("#plot-description").text("lorem ipsum gardening 2");
 });
 
 }

@@ -11,31 +11,37 @@ var secretPlotSCO = new SecretPlot("Sabin Community Orchard", 45.553035, -122.64
 var secretPlotGTCO = new SecretPlot("Green Thumb Community Orchard",45.562162, -122.644807);
 var secretPlotFOD = new SecretPlot("Fruits of Diversity Community Orchard", 45.590446, -122.711207);
 
+var secretPlots= [secretPlotPCUCC, secretPlotGCO, secretPlotGTCO, secretPlotSCO, secretPlotFOD ];
+
+/// sorts secretPlots Array by latitude to match labels.
+secretPlots.sort(function(a, b){
+    return a.latitude-b.latitude;
+});
+
+// console.log(secretPlots[0].plotName);
+// console.log(secretPlots[1].plotName);
+// console.log(secretPlots[2].plotName);
+// console.log(secretPlots[3].plotName);
+// console.log(secretPlots[4].plotName);
+
+var locationNumber = 4;  /// later we can set this with locations.length
 var locations = [
-  {lat: secretPlotFOD.latitude, lng:secretPlotFOD.longitude},
-  {lat: secretPlotGTCO.latitude, lng:secretPlotGTCO.longitude},
-  {lat: secretPlotSCO.latitude, lng:secretPlotSCO.longitude},
-  {lat: secretPlotPCUCC.latitude, lng:secretPlotPCUCC.longitude},
-  {lat: secretPlotGCO.latitude, lng: secretPlotGCO.longitude},
-  {lat: -34.671264, lng: 150.863657},
-  {lat: -35.304724, lng: 148.662905},
-  {lat: -36.817685, lng: 175.699196},
-  {lat: -36.828611, lng: 175.790222},
-  {lat: -37.750000, lng: 145.116667},
-  {lat: -37.759859, lng: 145.128708},
-  {lat: -37.765015, lng: 145.133858},
-  {lat: -37.770104, lng: 145.143299},
-  {lat: -37.773700, lng: 145.145187},
-  {lat: -37.774785, lng: 145.137978},
-  {lat: -37.819616, lng: 144.968119},
-  {lat: -38.330766, lng: 144.695692},
-  {lat: -39.927193, lng: 175.053218},
-  {lat: -41.330162, lng: 174.865694},
-  {lat: -42.734358, lng: 147.439506},
-  {lat: -42.734358, lng: 147.501315},
-  {lat: -42.735258, lng: 147.438000},
-  {lat: -43.999792, lng: 170.463352}
+  {lat: secretPlots[4].latitude, lng:secretPlots[4].longitude},
+  {lat: secretPlots[3].latitude, lng:secretPlots[3].longitude},
+  {lat: secretPlots[2].latitude, lng:secretPlots[2].longitude},
+  {lat: secretPlots[1].latitude, lng:secretPlots[1].longitude},
+  {lat: secretPlots[0].latitude, lng:secretPlots[0].longitude},
+  // {lat: secretPlots[locationNumber].latitude, lng:secretPlots[locationNumber].longitude},
+  // {lat: secretPlots[locationNumber - 1].latitude, lng:secretPlots[locationNumber -1].longitude},
+  // {lat: secretPlots[locationNumber-2].latitude, lng:secretPlots[locationNumber -2].longitude},
+  // {lat: secretPlots[locationNumber -3].latitude, lng:secretPlots[locationNumber -3].longitude},
+  // {lat: secretPlots[locationNumber -4].latitude, lng:secretPlots[locationNumber -4].longitude},
+  // {lat: secretPlotGTCO.latitude, lng:secretPlotGTCO.longitude},
+  // {lat: secretPlotSCO.latitude, lng:secretPlotSCO.longitude},
+  // {lat: secretPlotPCUCC.latitude, lng:secretPlotPCUCC.longitude},
+  // {lat: secretPlotGCO.latitude, lng: secretPlotGCO.longitude},
 ]
+
 /// UI Maps ////
       function initMap() {
 
