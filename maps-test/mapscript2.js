@@ -18,11 +18,6 @@ secretPlots.sort(function(a, b){
     return a.latitude-b.latitude;
 });
 
-// console.log(secretPlots[0].plotName);
-// console.log(secretPlots[1].plotName);
-// console.log(secretPlots[2].plotName);
-// console.log(secretPlots[3].plotName);
-// console.log(secretPlots[4].plotName);
 
 var locationNumber = 4;  /// later we can set this with locations.length
 var locations = [
@@ -31,15 +26,7 @@ var locations = [
   {lat: secretPlots[2].latitude, lng:secretPlots[2].longitude},
   {lat: secretPlots[1].latitude, lng:secretPlots[1].longitude},
   {lat: secretPlots[0].latitude, lng:secretPlots[0].longitude},
-  // {lat: secretPlots[locationNumber].latitude, lng:secretPlots[locationNumber].longitude},
-  // {lat: secretPlots[locationNumber - 1].latitude, lng:secretPlots[locationNumber -1].longitude},
-  // {lat: secretPlots[locationNumber-2].latitude, lng:secretPlots[locationNumber -2].longitude},
-  // {lat: secretPlots[locationNumber -3].latitude, lng:secretPlots[locationNumber -3].longitude},
-  // {lat: secretPlots[locationNumber -4].latitude, lng:secretPlots[locationNumber -4].longitude},
-  // {lat: secretPlotGTCO.latitude, lng:secretPlotGTCO.longitude},
-  // {lat: secretPlotSCO.latitude, lng:secretPlotSCO.longitude},
-  // {lat: secretPlotPCUCC.latitude, lng:secretPlotPCUCC.longitude},
-  // {lat: secretPlotGCO.latitude, lng: secretPlotGCO.longitude},
+
 ]
 
 /// UI Maps ////
@@ -59,52 +46,79 @@ var locations = [
         // Note: The code uses the JavaScript Array.prototype.map() method to
         // create an array of markers based on a given "locations" array.
         // The map() method here has nothing to do with the Google Maps API.
+
+        var infoWindowOptionsFOD = {
+            content: 'Blaha bahdfja;dfja;lsd jfjkf jladf jj kdj '
+        };
         var markers = locations.map(function(location, i) {
           return new google.maps.Marker({
             position: location,
-            label: labels[i % labels.length]
+            label: labels[i % labels.length],
+            animation: google.maps.Animation.DROP,
+            title: secretPlots[i].plotName,
           });
-        });
+          marker.addListener('click', toggleBounce);
+          // make markers
+            // return new google.maps.InfoWindow(infoWindowOptionsFOD);
+            google.maps.event.addListener(locations[i],'click',function(e){
+              $("#plot-title").text("lorem ipsum gardening");
+              // infoWindowFOD.open(map, marker);
+            });
+            // add eventListener
+            // add infoWindow
+            // this
+          });
+          // locations.map
+
 
         // Add a marker clusterer to manage the markers.
         var markerCluster = new MarkerClusterer(map, markers,
             {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
 
           // markers and info windows
-          var mapFruitsOfDiversity = {
-              position: new google.maps.LatLng(secretPlotFOD.latitude, secretPlotFOD.longitude),
-              map: map
-          };
+          // var mapFruitsOfDiversity = {
+          //     position: new google.maps.LatLng(secretPlotFOD.latitude, secretPlotFOD.longitude),
+          //     map: map
+          // };
+          //
+          // var mapSabinCommunityOrchard = {
+          //     position: new google.maps.LatLng(secretPlotSCO.latitude, secretPlotSCO.longitude),
+          //     map: map
+          // };
+          //
+          //   var marker = new google.maps.Marker(mapFruitsOfDiversity);
+          //   marker.setMap(map);
+          //   var marker2 = new google.maps.Marker(mapSabinCommunityOrchard);
+          //   marker.setMap(map);
+          //
+          //   var infoWindowOptionsFOD = {
+          //       content: 'Fruits of Diversity Community Orchard <br>Plot stats: <br>plot size: big <br>fruits: apples '
+          //   };
+          //   var infoWindowOptionsSCO = {
+          //       content: 'Sabin Community Orchard <br>Plot stats: <br>plot size: big <br>fruits: apples '
+          //   };
+          //
+          //   var infoWindowFOD = new google.maps.InfoWindow(infoWindowOptionsFOD);
+          //   google.maps.event.addListener(marker,'click',function(e){
+          //
+          //     infoWindowFOD.open(map, marker);
+          //
+          //   });
+          //   var infoWindowSCO = new google.maps.InfoWindow(infoWindowOptionsSCO);
+          //   google.maps.event.addListener(marker2,'click',function(e){
+          //
+          //     infoWindowSCO.open(map, marker2);
 
-          var mapSabinCommunityOrchard = {
-              position: new google.maps.LatLng(secretPlotSCO.latitude, secretPlotSCO.longitude),
-              map: map
-          };
-
-            var marker = new google.maps.Marker(mapFruitsOfDiversity);
-            marker.setMap(map);
-            var marker2 = new google.maps.Marker(mapSabinCommunityOrchard);
-            marker.setMap(map);
-
-            var infoWindowOptionsFOD = {
-                content: 'Fruits of Diversity Community Orchard <br>Plot stats: <br>plot size: big <br>fruits: apples '
-            };
-            var infoWindowOptionsSCO = {
-                content: 'Sabin Community Orchard <br>Plot stats: <br>plot size: big <br>fruits: apples '
-            };
-
-            var infoWindowFOD = new google.maps.InfoWindow(infoWindowOptionsFOD);
-            google.maps.event.addListener(marker,'click',function(e){
-
-              infoWindowFOD.open(map, marker);
-
-            });
-            var infoWindowSCO = new google.maps.InfoWindow(infoWindowOptionsSCO);
-            google.maps.event.addListener(marker2,'click',function(e){
-
-              infoWindowSCO.open(map, marker2);
-
-            });
+            // });
 
       }
       //init map
+
+      ///toggleBounce
+      function toggleBounce() {
+  if (marker.getAnimation() !== null) {
+    marker.setAnimation(null);
+  } else {
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+  }
+}

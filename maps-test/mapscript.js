@@ -8,8 +8,6 @@ var mapNeighbourhood = {
     mapTypeId: google.maps.MapTypeId.ROADMAP
 };
 
-
-
 var map = new google.maps.Map(document.getElementById('map'), mapNeighbourhood);
 
 var mapFruitsOfDiversity = {
@@ -26,6 +24,9 @@ var marker = new google.maps.Marker(mapFruitsOfDiversity);
 marker.setMap(map);
 var marker2 = new google.maps.Marker(mapSabinCommunityOrchard);
 marker.setMap(map);
+var markers = [marker, marker2];
+var markerCluster = new MarkerClusterer(map, markers,
+    {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
 
 var infoWindowOptionsFOD = {
     content: 'Fruits of Diversity Community Orchard <br>Plot stats: <br>plot size: big <br>fruits: apples '
