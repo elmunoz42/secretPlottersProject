@@ -5,15 +5,18 @@ function SecretPlot(plotName, latitude, longitude) {
   this.latitude = latitude;
   this.longitude = longitude;
 }
+var secretPlotGCO = new SecretPlot("Gabriel Community Orchard", 45.470266, -122.720072);
+var secretPlotPCUCC = new SecretPlot("Parkrose Community United Church of Christ", 45.534277, -122.533966);
+var secretPlotSCO = new SecretPlot("Sabin Community Orchard", 45.553035, -122.647525);
+var secretPlotGTCO = new SecretPlot("Green Thumb Community Orchard",45.562162, -122.644807);
+var secretPlotFOD = new SecretPlot("Fruits of Diversity Community Orchard", 45.590446, -122.711207);
 
-var secretPlotFOD = new SecretPlot("Fruits of Diversity Community Orchard", 45.553110, -122.646701);
-var secretPlotSCO = new SecretPlot("Sabin Community Orchard", 45.590604, -122.711207);
 var locations = [
   {lat: secretPlotFOD.latitude, lng:secretPlotFOD.longitude},
+  {lat: secretPlotGTCO.latitude, lng:secretPlotGTCO.longitude},
   {lat: secretPlotSCO.latitude, lng:secretPlotSCO.longitude},
-  {lat: -33.727111, lng: 150.371124},
-  {lat: -33.848588, lng: 151.209834},
-  {lat: -33.851702, lng: 151.216968},
+  {lat: secretPlotPCUCC.latitude, lng:secretPlotPCUCC.longitude},
+  {lat: secretPlotGCO.latitude, lng: secretPlotGCO.longitude},
   {lat: -34.671264, lng: 150.863657},
   {lat: -35.304724, lng: 148.662905},
   {lat: -36.817685, lng: 175.699196},
@@ -43,7 +46,8 @@ var locations = [
         });
 
         // Create an array of alphabetical characters used to label the markers.
-        var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        var labels = [secretPlotFOD.plotName, secretPlotGTCO.plotName, secretPlotSCO.plotName,  secretPlotPCUCC.plotName, secretPlotGCO.plotName];
+        // var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
         // Add some markers to the map.
         // Note: The code uses the JavaScript Array.prototype.map() method to
@@ -62,12 +66,12 @@ var locations = [
 
           // markers and info windows
           var mapFruitsOfDiversity = {
-              position: new google.maps.LatLng(45.590604, -122.711207),
+              position: new google.maps.LatLng(secretPlotFOD.latitude, secretPlotFOD.longitude),
               map: map
           };
 
           var mapSabinCommunityOrchard = {
-              position: new google.maps.LatLng(45.553110, -122.646701),
+              position: new google.maps.LatLng(secretPlotSCO.latitude, secretPlotSCO.longitude),
               map: map
           };
 
