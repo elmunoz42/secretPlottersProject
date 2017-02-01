@@ -49,12 +49,30 @@ secretPlots.sort(function(a, b){
 $(document).ready(function() {
   $("#viewmap").hide();
 
-  $("form").submit(function(event) {
+  $("form#to-do").submit(function(event) {
     event.preventDefault();
-    $("#plot-title").show();
-    $("#viewmap").show();
 
-    initMap ();
+    var toDoResult = parseInt($("#action-choice").val());
+    console.log(toDoResult);
+    if (toDoResult === 1) {
+      $("#plot-title").show();
+      $("#viewmap").show();
+      initMap ();
+      console.log("find-plot");
+    } else if (toDoResult === 2){
+      $("#plot-title").hide();
+      $("#viewmap").hide();
+      console.log("create-plot");
+    } else if (toDoResult === 3){
+      $("#plot-title").hide();
+      $("#viewmap").hide();
+      console.log("comment-on-plot");
+    } else if (toDoResult === 4){
+      $("#plot-title").hide();
+      $("#viewmap").hide();
+      console.log("adventure!");
+    }
+
   });
 });
 
