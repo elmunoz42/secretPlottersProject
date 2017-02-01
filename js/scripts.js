@@ -4,17 +4,17 @@
 
 // user interface logic
 $(document).ready(function() {
-  $("form").submit(function(event) {
+  $("form#to-do").submit(function(event) {
     event.preventDefault();
     $("#plot-title").show();
     $("#viewmap").show();
-    function toggleDiv2(viewmap){
-        if(document.getElementById(viewmap).style.display == 'none'){
-            document.getElementById(viewmap).style.display = 'block';
-        }else{
-            document.getElementById(viewmap).style.display = 'none';
-        }
-    }
+    // function toggleDiv2(viewmap){
+    //     if(document.getElementById(viewmap).style.display == 'none'){
+    //         document.getElementById(viewmap).style.display = 'block';
+    //     }else{
+    //         document.getElementById(viewmap).style.display = 'none';
+    //     }
+    // }
   });
   // go submit
 

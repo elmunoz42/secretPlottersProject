@@ -27,11 +27,42 @@ secretPlots.sort(function(a, b){
     return a.latitude-b.latitude;
 });
 
-
+// function displayMap() {
+//                     document.getElementById('viewmap').style.display="block";
+//                     initialize();
+//                 }
+//          function initialize() {
+//                   // create the map
+//
+//                 var myOptions = {
+//                     zoom: 14,
+//                     center: new google.maps.LatLng(0.0, 0.0),
+//                     mapTypeId: google.maps.MapTypeId.ROADMAP
+//                   }
+//                     map = new google.maps.Map(document.getElementById("map_canvas"),
+//                                                 myOptions);
+//
+//                  }
 
 ////////UI///////////
-function initMap() {
 
+$(document).ready(function() {
+  $("#viewmap").hide();
+
+  $("form").submit(function(event) {
+    event.preventDefault();
+    $("#plot-title").show();
+    $("#viewmap").show();
+
+    initMap ();
+  });
+});
+
+function initMap() {
+  document.getElementById('viewmap').style.display="block";
+  initialize();
+}
+function initialize () {
 var mapNeighbourhood = {
     center: new google.maps.LatLng(45.590604, -122.711207),
     zoom: 10,
