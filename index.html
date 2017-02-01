@@ -2,40 +2,61 @@
 <html>
   <head>
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="css/mapstyles.css" rel="stylesheet" type="text/css">
     <script src="js/jquery-3.1.1.js"></script>
+    <script src="js/markerclusterer.js"></script>
+    <script src="js/mapscript.js"></script>
     <script src="js/scripts.js"></script>
-    <title>secretPlottersProject</title>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRQ_rKHZRvaZAEBYDniQKYszwYZP9FgQI&callback=initMap">
+    </script>
   </head>
   <body>
-    <div class="container">
-      <div class="jumbotron">
-        <h1>Hi!</h1>
-        <h2>lets...</h2>
-        <form class="form-group">
-          <select id="action-choice" class="form-control" >
-            <option value="find-plot"><span id="verb">find</span> a secretPlot</option>
-            <option value="create-plot"><span id="verb">create</span> a secretPlot</option>
-            <option value="comment-on-plot"><span id="verb">comment</span> on a secretPlot</option>
-            <option value="adventure!"><span id="verb">adventure!</span></option>
-          </select>
-          <button type="submit" class="btn" name="go-button">GO!</button>
-        </form>
-      </div>
-      <!-- jumbotron -->
-      <div class="find-plot-div">
-        <img id="fruits-of-diversity" src="img/fruits-of-diversity.png" alt="fruits-of-diversity"/>
-      </div>
-      <!-- find-plot-div -->
-      <div class="plot-site">
-        <h2>Fruits of Diversity Community Orchard</h2>
-        <p>
-          Is located at 4375 N Trenton, or about 200 yards north of the intersection of N Alaska and N Trenton (Bus Stop ID: 5862). Walk north along the sidewalk adjacent to Village Gardens' Seeds of Harmony Community Garden to reach the orchard.
-        </p>
+    <div class="jumbotron">
+      <h1>Hi!</h1>
+      <h2>lets...</h2>
+      <form class="form-group">
+        <select id="action-choice" class="form-control" >
+          <option value="find-plot"><span id="verb">find</span> a secretPlot</option>
+          <option value="create-plot"><span id="verb">create</span> a secretPlot</option>
+          <option value="comment-on-plot"><span id="verb">comment</span> on a secretPlot</option>
+          <option value="adventure!"><span id="verb">adventure!</span></option>
+        </select>
+        <button type="submit" class="btn" name="go-button">GO!</button>
+      </form>
+    </div><!-- jumbotron -->
 
-      </div>
-      <!-- find-plot-div -->
+    <h2 id="plot-title">Select a marker on the map</h2>
+    <div id="viewmap"></div>
+
+    <div class="find-plot-div">
+      <div id="garden-blog-description" class="jumbotron">
+        <h2 id="plot-title2"></h2>
+         <p>
+
+         </p>
+         <h3>Plot Description:</h3>
+          <p id="plot-description">
+         <h3>Plot Blog</h3>
+         <label id="blog-plotter1"></label>
+         <blockquote id="blog-message1">
+
+         </blockquote>
+         <label id="blog-plotter2"></label>
+         <blockquote id="blog-message2">
+
+         </blockquote>
+         <h3>Plot Stats</h3>
+         <ul>
+           <li>plot size: <span id="plot-size"></span></li>
+           <li>produce: <span id="plot-produce"></span></li>
+         </ul>
+       </div>
+       <!-- jumbotron garden-blog-description-->
+     </div>
+     <!-- container -->
     </div>
-    <!-- container -->
+    <!-- find-plot-div -->
   </body>
 </html>

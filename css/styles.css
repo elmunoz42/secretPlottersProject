@@ -5,3 +5,13 @@
 .plot-site {
   display: none;
 }
+.jumbotron {
+  margin-top: 10px;
+}
+/*#map {
+  /*display: none;*/
+/*}*/
+#plot-title {
+  text-align: center;
+  display: none;
+}
