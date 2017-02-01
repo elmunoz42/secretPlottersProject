@@ -12,12 +12,30 @@
 
   </head>
   <body>
-
+    <!-- index -->
+      <div class="jumbotron">
+        <h1>Hi!</h1>
+        <h2>lets...</h2>
+        <form class="form-group">
+          <select id="action-choice" class="form-control" >
+            <option value="find-plot"><span id="verb">find</span> a secretPlot</option>
+            <option value="create-plot"><span id="verb">create</span> a secretPlot</option>
+            <option value="comment-on-plot"><span id="verb">comment</span> on a secretPlot</option>
+            <option value="adventure!"><span id="verb">adventure!</span></option>
+          </select>
+          <button type="submit" class="btn" name="go-button">GO!</button>
+        </form>
+      </div><!-- jumbotron -->
+      <div class="find-plot-div">
+        <!-- <img id="fruits-of-diversity" src="../img/fruits-of-diversity.png" alt="fruits-of-diversity"/> -->
+      </div>
+      <!-- find-plot-div -->
+    <!-- index -->
         <script src="mapscript.js"></script>
         <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRQ_rKHZRvaZAEBYDniQKYszwYZP9FgQI&callback=initMap">
         </script>
-        <div class="container">
+         <div class="container">
           <div class="jumbotron">
             <h2 id="plot-title">Fruits of Diversity Community Orchard</h2>
             <p id="plot-description">
@@ -29,9 +47,9 @@
               <li>plot size: <span id="plot-size"></span></li>
               <li>produce: <span id="plot-produce"></span></li>
             </ul>
-          </div>
+          </div> -->
           <!-- jumbotron -->
-        </div>
+        </div> -->
         <!-- container -->
         <div id="map"></div>
 
