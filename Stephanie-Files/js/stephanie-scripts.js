@@ -13,9 +13,12 @@ $(document).ready(function(){
         $('html, body').animate({
           scrollTop: $("#userDetailsForm").offset().top
         }, 2000);
-
+         // html animate
       });
+       // confirmButton
     });
+   // submit plot click
   });
-
+  //addPlot click
 });
+//document ready
