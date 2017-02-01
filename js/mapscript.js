@@ -28,10 +28,82 @@ secretPlots.sort(function(a, b){
 });
 
 
-
 ////////UI///////////
-function initMap() {
 
+$(document).ready(function() {
+  $("#viewmap").hide();
+
+  $("#addPlot").click(function(event){
+    event.preventDefault();
+    $("#readyToPlantButton").toggle();
+
+    $("#showForm").show();
+  });
+  //addPlot click
+
+  $("#find-plot-button").click(function() {
+    event.preventDefault();
+    $("#plot-title").show();
+    $("#viewmap").show();
+    alert("hello");
+    initMap ();
+    console.log("find-plot");
+  });
+  //findPlot click
+
+  $("#add-plot-button").click(function(){
+    $("#plot-title").hide();
+    $("#viewmap").hide();
+  });
+  // addPlot click
+
+  
+    $("#submitPlotButton").click(function(event){
+      event.preventDefault();
+      $("#plotDetailsForm").show();
+      $("#confirmButton").click(function(event){
+        event.preventDefault();
+        $("#userDetailsForm").show();
+        $('html, body').animate({
+          scrollTop: $("#userDetailsForm").offset().top
+        }, 2000);
+         // html animate
+      });
+       // confirmButton
+    });
+   // submit plot click
+  $("form#to-do").submit(function(event) {
+    event.preventDefault();
+
+    var toDoResult = parseInt($("#action-choice").val());
+    console.log(toDoResult);
+    if (toDoResult === 1) {
+      $("#plot-title").show();
+      $("#viewmap").show();
+      initMap ();
+      console.log("find-plot");
+    } else if (toDoResult === 2){
+      $("#plot-title").hide();
+      $("#viewmap").hide();
+      console.log("create-plot");
+    } else if (toDoResult === 3){
+      $("#plot-title").hide();
+      $("#viewmap").hide();
+      console.log("comment-on-plot");
+    } else if (toDoResult === 4){
+      $("#plot-title").hide();
+      $("#viewmap").hide();
+      console.log("adventure!");
+    }
+
+  });
+});
+
+function initMap() {
+  document.getElementById('viewmap').style.display="block";
+  initialize();
+}
+function initialize () {
 var mapNeighbourhood = {
     center: new google.maps.LatLng(45.590604, -122.711207),
     zoom: 10,
