@@ -294,29 +294,51 @@ $(document).ready(function() {
     $("#add-new-blog-post").show();
 
 
-    $("form#new-blog-post-submit").submit(function(event) {
-      event.preventDefault();
-      $("#plot-title").empty();
-      $(".find-plot-div").hide();
-      $("#blog-plotter1").text("");
-      $("#blog-message1").text("");
-      $("#blog-plotter2").text("");
-      $("#blog-message2").text("");
-      $("#blog-posts").show();
-
-      var newBlogPostUser = $("#new-blog-post-user").val();
-      var newBlogPost = $("#new-blog-post").val();
-
-      var newPlotBlog = [];
-      var blogEntryNew = new BlogEntry (newBlogPostUser, newBlogPost);
-      console.log(blogEntryNew);
-      newPlotBlog.push(blogEntryNew);
-      console.log(newPlotBlog);
-
-      $("#blog-entry1").text(blogEntryNew.plotter);
-      $("#blog-post1").text(blogEntryNew.message);
+  $("form#new-blog-post-submit").submit(function(event) {
+    event.preventDefault();
+    $("#plot-title").empty();
+    $(".find-plot-div").hide();
+    $("#blog-plotter1").text("");
+    $("#blog-message1").text("");
+    $("#blog-plotter2").text("");
+    $("#blog-message2").text("");
 
 
+    var newBlogPostUser = $("#new-blog-post-user").val();
+    var newBlogPost = $("#new-blog-post").val();
+
+    var newPlotBlog = [];
+    var blogEntryNew = new BlogEntry (newBlogPostUser, newBlogPost);
+    console.log(blogEntryNew);
+    newPlotBlog.push(blogEntryNew);
+    console.log(newPlotBlog);
+
+    $("#blog-posts").show();
+
+
+
+  $("#new-blog-entry").append('<p class="blog-poster">' +
+                                blogEntryNew.plotter + '</p>' +
+                                '<blockquote class="blog-entry">' + blogEntryNew.message + '</blockquote>'
+
+  );
+
+
+
+
+      // blogEntryNew.plotter.forEach(function(element) {
+      //   $("p#blog-entry1").append(blogEntryNew.plotter);
+      // });
+      // blogEntryNew.message.forEach(function(element) {
+      //   $("blockquote#blog-post1").append(blogEntryNew.message);
+      // });
+
+      // $("#blog-entry1").text(blogEntryNew.plotter);
+      // $("#blog-post1").text(blogEntryNew.message);
+
+
+      $("#new-blog-post-user").val("");
+      $("#new-blog-post").val("");
     });
 
 
