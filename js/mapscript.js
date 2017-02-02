@@ -7,6 +7,13 @@ function SecretPlot(plotName, latitude, longitude, description, plotSize, produc
   this.plotProduce = produce;
   this.plotBlog = blog;
 }
+
+
+function BlogEntry(plotter, message) {
+  this.plotter = plotter;
+  this.message = message;
+}
+
 var secretPlotGCO = new SecretPlot("Gabriel Community Orchard", 45.470266, -122.720072, 'Located adjacent to Gabriel Community Garden at 4151 SW Canby St in Southwest Portland, Gabriel Community Orchard is home to more than 40 mature fruit trees, the perfect orchard for any apple lover. ', 'big', [' apples', ' other'], [{plotter: 'Bob', message:'Im way down here!'},{plotter: 'Tina', message: 'Ya me too!'}]);
 
 var secretPlotPCUCC = new SecretPlot("Parkrose Community United Church of Christ", 45.534277, -122.533966, 'Parkrose Community Orchard is our fifth and newest orchard. Located on the property of Parkrose Community United Church of Christ, it is home to about 30 fruit trees and dozens of understory and native plants.', 'big',[' apples', ' other'],[{plotter: 'Bob', message:'Mmm native plants!'},{plotter: 'Tina', message: 'Wow!'}]);
@@ -281,7 +288,38 @@ $(document).ready(function() {
     event.preventDefault();
     $("#plot-title").hide();
     $("#viewmap").hide();
+    $(".find-plot-div").hide();
+    $("#add-new-plot").hide();
     console.log("comment-on-plot");
+    $("#add-new-blog-post").show();
+
+
+    $("form#new-blog-post-submit").submit(function(event) {
+      event.preventDefault();
+      $("#plot-title").empty();
+      $(".find-plot-div").hide();
+      $("#blog-plotter1").text("");
+      $("#blog-message1").text("");
+      $("#blog-plotter2").text("");
+      $("#blog-message2").text("");
+      $("#blog-posts").show();
+
+      var newBlogPostUser = $("#new-blog-post-user").val();
+      var newBlogPost = $("#new-blog-post").val();
+
+      var newPlotBlog = [];
+      var blogEntryNew = new BlogEntry (newBlogPostUser, newBlogPost);
+      console.log(blogEntryNew);
+      newPlotBlog.push(blogEntryNew);
+      console.log(newPlotBlog);
+
+      $("#blog-entry1").text(blogEntryNew.plotter);
+      $("#blog-post1").text(blogEntryNew.message);
+
+
+    });
+
+
   });
 
 
