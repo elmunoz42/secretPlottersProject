@@ -59,6 +59,18 @@ $(document).ready(function() {
     $("#add-new-plot").hide();
     $("#add-profile").show();
   })
+  // create-profile-button
+  var userName;
+  var userNamePassword;
+  $("#new-profile-submit").submit(function(event){
+    event.preventDefault();
+    userName = $("#user-name").val();
+    userNamePassword = $("#password").val();
+    // $("#user-name-nav").show();
+    $("#user-name-spot").text(userName);
+    // alert(userName);
+    // alert(userNamePassword);
+  });
   $("#add-plot-button").click(function(){
     event.preventDefault();
     console.log("create-plot");
