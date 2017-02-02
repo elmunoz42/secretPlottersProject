@@ -117,8 +117,8 @@ function initMap() {
 }
 function initialize () {
 var mapNeighbourhood = {
-    center: new google.maps.LatLng(45.590604, -122.711207),
-    zoom: 10,
+    center: new google.maps.LatLng(45.470266, -122.720072),
+    zoom: 7,
     mapTypeId: google.maps.MapTypeId.ROADMAP
 };
 
