@@ -20,6 +20,7 @@
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRQ_rKHZRvaZAEBYDniQKYszwYZP9FgQI&callback=initMap">
     </script>
+
   </head>
   <body>
 
@@ -122,6 +123,11 @@
       <div class="col-sm-12 col-md-6">
         <div id="add-new-plot">
           <h2>Add a plot:</h2>
+          <p>Your current is:</p>
+          <ul>
+            <li id="current-lat"></li>
+            <li id="current-lng"></li>
+          </ul>
           <form id="new-plot-submit">
             <div class="form-group">
               <label for="new-plot-name">Plot name:</label>

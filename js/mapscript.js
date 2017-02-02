@@ -34,12 +34,12 @@ secretPlots.sort(function(a, b){
 $(document).ready(function() {
   $("#viewmap").hide();
 
-  $("#addPlot").click(function(event){
-    event.preventDefault();
-    $("#readyToPlantButton").toggle();
-
-    $("#showForm").show();
-  });
+  // $("#addPlot").click(function(event){
+  //   event.preventDefault();
+  //   $("#readyToPlantButton").toggle();
+  //   $("#showForm").show();
+  //
+  // });
   //addPlot click
 
   $("#find-plot-button").click(function() {
@@ -56,8 +56,10 @@ $(document).ready(function() {
     console.log("create-plot");
     $("#plot-title").hide();
     $("#viewmap").hide();
+    // $("#viewmap").show();
     $(".find-plot-div").hide();
     $("#add-new-plot").show();
+
   });
   // addPlot click
 
@@ -150,9 +152,48 @@ var mapNeighbourhood = {
     center: new google.maps.LatLng(38.151461, -95.076235),
     zoom: 3,
     mapTypeId: google.maps.MapTypeId.ROADMAP
-};
+  };
+  // initialize first map location
 
 var map = new google.maps.Map(document.getElementById('viewmap'), mapNeighbourhood);
+
+  var infoWindow = new google.maps.InfoWindow({map: map});
+  var currentLocation = {};
+    // geolocator
+    if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            currentLocation = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            }
+            console.log(currentLocation.lat);
+            console.log(currentLocation.lng);
+            $("#current-lat").text(currentLocation.lat);
+            $("#current-lng").text(currentLocation.lng);
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Your Coordinates <br>latitude:' + position.coords.latitude + '<br>longitude:' + position.coords.longitude);
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+      }
+      // geolocator
+
+
 
 var mapFruitsOfDiversity = {
     position: new google.maps.LatLng(secretPlotFOD.latitude, secretPlotFOD.longitude),
