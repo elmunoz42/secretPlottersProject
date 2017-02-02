@@ -15,6 +15,9 @@
   text-align: center;
   display: none;
 }
+#add-new-plot {
+  display: none;
+}
 body {
   color: black;
   background-color: yellow;

@@ -53,11 +53,76 @@ $(document).ready(function() {
 
   $("#add-plot-button").click(function(){
     event.preventDefault();
+    console.log("create-plot");
     $("#plot-title").hide();
     $("#viewmap").hide();
-    console.log("add a plot");
+    $(".find-plot-div").hide();
+    $("#add-new-plot").show();
   });
   // addPlot click
+
+  $("form#new-plot-submit").submit(function(event) {
+    event.preventDefault();
+    $("#plot-title").empty();
+    $(".find-plot-div").hide();
+    $("#blog-plotter1").text("");
+    $("#blog-message1").text("");
+    $("#blog-plotter2").text("");
+    $("#blog-message2").text("");
+    var newPlotName = $("#new-plot-name").val();
+    var newLatitude = parseFloat($("#new-latitude").val());
+    var newLongitude = parseFloat($("#new-longitude").val());
+    var newDescription = $("#new-description").val();
+    var newPlotSize = $("#new-plot-size").val();
+    var newProduce = $("#new-produce").val();
+    var newBlogUser = $("#new-blog-user").val();
+    var newBlog = $("#new-blog").val();
+
+    var secretPlotNew = new SecretPlot (newPlotName, newLatitude, newLongitude, newDescription, newPlotSize, newProduce, [{plotter: newBlogUser, message: newBlog}]);
+       console.log(secretPlotNew);
+       secretPlots.push(secretPlotNew);
+       // console.log(newPlotBlog);
+
+
+     $("#plot-title").show();
+     $("#viewmap").show();
+
+     // initMap();
+
+     var mapNeighbourhood = {
+         center: new google.maps.LatLng(45.590604, -122.711207),
+         zoom: 10,
+         mapTypeId: google.maps.MapTypeId.ROADMAP
+     }
+     var map = new google.maps.Map(document.getElementById('viewmap'), mapNeighbourhood);
+
+     var mapNewSecretPlot = {
+         position: new google.maps.LatLng(secretPlotNew.latitude, secretPlotNew.longitude),
+         map: map
+     };
+
+     var markerNew = new google.maps.Marker(mapNewSecretPlot);
+
+     var infoWindowOptionsNew = {
+         content: secretPlotNew.plotName + '<br>Plot stats: <br>plot size: ' + secretPlotNew.plotSize + ' <br>produce: ' + secretPlotNew.plotProduce,
+     };
+
+     var infoWindowNew = new google.maps.InfoWindow(infoWindowOptionsNew);
+     google.maps.event.addListener(markerNew,'click',function(e){
+       infoWindowNew.open(map, markerNew);
+       $(".find-plot-div").show();
+       $("#plot-title").text(secretPlotNew.plotName);
+       $("#plot-title2").text(secretPlotNew.plotName);
+       $("#plot-description").text(secretPlotNew.plotDescription);
+       $("#blog-plotter1").text(secretPlotNew.plotBlog[0].plotter);
+       $("#blog-message1").text(secretPlotNew.plotBlog[0].message);
+      //  $("#blog-plotter2").text(secretPlotNew.plotBlog[1].plotter);
+      //  $("#blog-message2").text(secretPlotNew.plotBlog[1].message);
+       $("#plot-size").text(secretPlotNew.plotSize);
+       $("#plot-produce").text(secretPlotNew.plotProduce);
+     });
+  });
+  // form new-plot-submit
 
   $("#create-profile-button").click(function(){
     event.preventDefault();
@@ -74,45 +139,7 @@ $(document).ready(function() {
     console.log("comment-on-plot");
   });
 
-    $("#submitPlotButton").click(function(event){
-      event.preventDefault();
-      $("#plotDetailsForm").show();
-      $("#confirmButton").click(function(event){
-        event.preventDefault();
-        $("#userDetailsForm").show();
-        $('html, body').animate({
-          scrollTop: $("#userDetailsForm").offset().top
-        }, 2000);
-         // html animate
-      });
-       // confirmButton
-    });
-   // submit plot click
-  $("form#to-do").submit(function(event) {
-    event.preventDefault();
 
-    var toDoResult = parseInt($("#action-choice").val());
-    console.log(toDoResult);
-    if (toDoResult === 1) {
-      $("#plot-title").show();
-      $("#viewmap").show();
-      initMap ();
-      console.log("find-plot");
-    } else if (toDoResult === 2){
-      $("#plot-title").hide();
-      $("#viewmap").hide();
-      console.log("create-plot");
-    } else if (toDoResult === 3){
-      $("#plot-title").hide();
-      $("#viewmap").hide();
-      console.log("comment-on-plot");
-    } else if (toDoResult === 4){
-      $("#plot-title").hide();
-      $("#viewmap").hide();
-      console.log("adventure!");
-    }
-
-  });
 });
 
 function initMap() {
@@ -164,7 +191,7 @@ var markerGTCO = new google.maps.Marker(mapGTCO);
 var markerPCUCC = new google.maps.Marker(mapPCUCC);
 var markerECO = new google.maps.Marker(mapECO);
 var markerBNC = new google.maps.Marker(mapBNC);
-markerGTCO.setMap(map);
+// markerGTCO.setMap(map);
 
 
 
