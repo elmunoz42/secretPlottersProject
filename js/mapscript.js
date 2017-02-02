@@ -216,6 +216,12 @@ $(document).ready(function() {
 
       $("form#new-plot-submit").submit(function(event) {
         event.preventDefault();
+        $("#plot-title").empty();
+        $(".find-plot-div").hide();
+        $("#blog-plotter1").text("");
+        $("#blog-message1").text("");
+        $("#blog-plotter2").text("");
+        $("#blog-message2").text("");
         var newPlotName = $("#new-plot-name").val();
         var newLatitude = parseFloat($("#new-latitude").val());
         var newLongitude = parseFloat($("#new-longitude").val());
@@ -322,7 +328,7 @@ $(document).ready(function() {
           $("#plot-title2").text(secretPlotNew.plotName);
           $("#plot-description").text(secretPlotNew.plotDescription);
           $("#blog-plotter1").text(secretPlotNew.plotBlog[0].plotter);
-          $("#blog-message1").text(secretPlotFOD.plotBlog[0].message);
+          $("#blog-message1").text(secretPlotNew.plotBlog[0].message);
           $("#plot-size").text(secretPlotNew.plotSize);
           $("#plot-produce").text(secretPlotNew.plotProduce);
         });
