@@ -17,9 +17,6 @@ var secretPlotGTCO = new SecretPlot("Green Thumb Community Orchard",45.562162, -
 
 var secretPlotFOD = new SecretPlot("Fruits of Diversity Community Orchard", 45.590446, -122.711207, 'Currently, the orchard is home to over 40 fruit trees, dozens of edible shrubs, and countless understory and companion plants and will continue to grow each year! ', ' big', [' fruits', ' edible shrubs' ], [{plotter: 'Bob', message:'I love this garden!'},{plotter: 'Tina', message: 'Ya me too!'}]);
 
-
-
-
 var secretPlots= [secretPlotPCUCC, secretPlotGCO, secretPlotGTCO, secretPlotSCO, secretPlotFOD ];
 
 /// sorts secretPlots Array by latitude to match labels.
@@ -45,19 +42,34 @@ $(document).ready(function() {
     event.preventDefault();
     $("#plot-title").show();
     $("#viewmap").show();
-    alert("hello");
     initMap ();
     console.log("find-plot");
   });
   //findPlot click
 
   $("#add-plot-button").click(function(){
+    event.preventDefault();
     $("#plot-title").hide();
     $("#viewmap").hide();
+    console.log("add a plot");
   });
   // addPlot click
 
-  
+  $("#create-profile-button").click(function(){
+    event.preventDefault();
+    $("#plot-title").hide();
+    $("#viewmap").hide();
+    console.log("create-profile-button");
+  });
+  // create-profile-button
+
+  $("#message-board-button").click(function(){
+    event.preventDefault();
+    $("#plot-title").hide();
+    $("#viewmap").hide();
+    console.log("comment-on-plot");
+  });
+
     $("#submitPlotButton").click(function(event){
       event.preventDefault();
       $("#plotDetailsForm").show();

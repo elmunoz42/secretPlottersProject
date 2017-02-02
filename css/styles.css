@@ -17,4 +17,30 @@
 }
 body {
   color: black;
+  background-color: yellow;
+}
+footer {
+  height: 20px;
+}
+.white {
+  color: white;
+}
+#viewmap {
+  align-self: center;
+  height: 400px;
+  width: 400px;
+  margin-left: 33px;
+  margin-right: 10px;
+  float: left;
+}
+.find-plot-div {
+  width: 500px;
+  margin-top: 0px;
+  margin-left: 0px;
+  margin-right: 33px;
+  float: right;
+  background-color: lightblue;
+}
+#bottom-nav {
+  clear: both;
 }
