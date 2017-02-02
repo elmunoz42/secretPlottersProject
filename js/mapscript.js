@@ -51,12 +51,19 @@ $(document).ready(function() {
   });
   //findPlot click
 
+  $("#create-profile-button").click(function(){
+    event.preventDefault();
+    $("#plot-title").hide();
+    $("#viewmap").hide();
+    $(".find-plot-div").hide();
+    $("#add-new-plot").hide();
+    $("#add-profile").show();
+  })
   $("#add-plot-button").click(function(){
     event.preventDefault();
     console.log("create-plot");
     $("#plot-title").hide();
     $("#viewmap").hide();
-    // $("#viewmap").show();
     $(".find-plot-div").hide();
     $("#add-new-plot").show();
 
