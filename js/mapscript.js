@@ -150,7 +150,7 @@ function initMap() {
 function initialize () {
 var mapNeighbourhood = {
     center: new google.maps.LatLng(38.151461, -95.076235),
-    zoom: 3,
+    zoom: 2,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
   // initialize first map location
@@ -175,7 +175,7 @@ var map = new google.maps.Map(document.getElementById('viewmap'), mapNeighbourho
             $("#current-lat").text(currentLocation.lat);
             $("#current-lng").text(currentLocation.lng);
             infoWindow.setPosition(pos);
-            infoWindow.setContent('Your Coordinates <br>latitude:' + position.coords.latitude + '<br>longitude:' + position.coords.longitude);
+            infoWindow.setContent('You');
             map.setCenter(pos);
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
