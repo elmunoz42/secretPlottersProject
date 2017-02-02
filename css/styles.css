@@ -101,3 +101,17 @@ blockquote {
 #user-name-spot {
   color: white;
 }
+#add-new-blog-post {
+  display: none;
+}
+#blog-posts {
+  display: none;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 2.5px;
+  margin-left: 0px;
+  margin-right: 0px;
+  /*float: right;*/
+  background-color: lightgreen;
+}
