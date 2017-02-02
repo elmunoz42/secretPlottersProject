@@ -44,6 +44,8 @@ $(document).ready(function() {
 
   $("#find-plot-button").click(function() {
     event.preventDefault();
+    $("#add-profile").hide();
+    $("#add-new-plot").hide();
     $("#plot-title").show();
     $("#viewmap").show();
     initMap ();
@@ -62,15 +64,30 @@ $(document).ready(function() {
   // create-profile-button
   var userName;
   var userNamePassword;
+  var loginMatch=false;
   $("#new-profile-submit").submit(function(event){
     event.preventDefault();
     userName = $("#user-name").val();
     userNamePassword = $("#password").val();
-    // $("#user-name-nav").show();
-    $("#user-name-spot").text(userName);
-    // alert(userName);
-    // alert(userNamePassword);
   });
+  // new-profile-submit
+
+  $("#login-button").click(function(){
+    event.preventDefault();
+    var uNInput= prompt("What's your userName?");
+    var uPInput= prompt("What's your password?");
+
+    if (uNInput === userName && uPInput === userNamePassword) {
+      alert("Welcome to the secretPlot family!");
+      $("#user-name-spot").text(userName);
+    }
+    else {
+      alert("User name and/or password are incorrect. <br>Please try again.")
+    }
+  });
+  // login
+
+
   $("#add-plot-button").click(function(){
     event.preventDefault();
     console.log("create-plot");
