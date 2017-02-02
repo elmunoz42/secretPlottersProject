@@ -28,3 +28,6 @@
  .garden-blog {
    margin-top: 4%;
  }
+#add-new-plot {
+  display: none;
+}
