@@ -19,9 +19,9 @@ var secretPlotFOD = new SecretPlot("Fruits of Diversity Community Orchard", 45.5
 
 var secretPlotECO = new SecretPlot("Engleston Community Orchard", 42.314182, -71.101638, "Situated on a parcel at 195 Boylston Street, Egleston Community Orchard (ECO) is a neighbor-led effort for sustainable urban agriculture and community green space, promoting environmental justice and community ownership of land in Egleston Square. ECO hopes to continue to engage the full diversity of Egleston Square, including youth, and frequently hosts cultural events and workshops open to the general public. Find out more about ECO.", 'big', [' fruits', ' berries', 'herbs', 'rain water'], [{plotter: 'Carlos', message:'I miss my Boston peeps!'},{plotter: 'Orion', message: 'Come get dirty with us!'}])
 
-var secretPlotBNC = new SecretPlot("Boston Nature Center", 42.288211, -71.101274, "In partnership with the Boston Nature Center, we are building a food forest in stages, focusing on a few centerpiece projects each year that offer valuable educational demonstration opportunities. We have spent this past growing season enriching the health of the soil through sheet mulching and the planting of nitrogen-fixing plants. We have also completed several Year 1 projects, including:", 'big', [' fruits', ' berries', 'herbs', 'leafy greens'], [{plotter: 'Carlos', message:'Happy wedding BoBo so sorry I missed it!'},{plotter: 'Bonnie', message: 'Spankings will continue until morale improves!'}])
+var secretPlotBNC = new SecretPlot("Boston Nature Center", 42.288211, -71.101274, "In partnership with the Boston Nature Center, we are building a food forest in stages, focusing on a few centerpiece projects each year that offer valuable educational demonstration opportunities. We have spent this past growing season enriching the health of the soil through sheet mulching and the planting of nitrogen-fixing plants.", 'big', [' fruits', ' berries', 'herbs', 'leafy greens'], [{plotter: 'Carlos', message:'Happy wedding BoBo so sorry I missed it!'},{plotter: 'Bonnie', message: 'Spankings will continue until morale improves!'}])
 
-var secretPlots= [secretPlotPCUCC, secretPlotGCO, secretPlotGTCO, secretPlotSCO, secretPlotFOD, secretPlotECO];
+var secretPlots= [secretPlotPCUCC, secretPlotGCO, secretPlotGTCO, secretPlotSCO, secretPlotFOD, secretPlotECO, secretPlotBNC];
 
 /// sorts secretPlots Array by latitude to match labels.
 secretPlots.sort(function(a, b){
@@ -82,7 +82,6 @@ $(document).ready(function() {
        console.log(secretPlotNew);
        secretPlots.push(secretPlotNew);
        // console.log(newPlotBlog);
-
 
      $("#plot-title").show();
      $("#viewmap").show();
