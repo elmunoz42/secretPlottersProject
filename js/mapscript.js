@@ -42,30 +42,30 @@ function BlogEntry(plotter, message, dateTime) {
   this.dateTime = dateTime;
 }
 
-function blogSaver(currentPlotName, blogEntry) {
+function blogSaver(currentPlotName, plotter, message, dateTime) {
   if (currentPlotName===secretPlotGCO.plotName){
-    secretPlotGCO.plotBlog.push(blogEntry);
+    secretPlotGCO.plotBlog.push({plotter, message, dateTime});
   }
   else if (currentPlotName===secretPlotPCUCC.plotName){
-    secretPlotPCUCC.plotBlog.push(blogEntry);
+    secretPlotPCUCC.plotBlog.push({plotter, message, dateTime});
   }
   else if (currentPlotName===secretPlotSCO.plotName){
-    secretPlotSCO.plotBlog.push(blogEntry);
+    secretPlotSCO.plotBlog.push({plotter, message, dateTime});
   }
   else if (currentPlotName===secretPlotGTCO.plotName){
-    secretPlotGTCO.plotBlog.push(blogEntry);
+    secretPlotGTCO.plotBlog.push({plotter, message, dateTime});
   }
   else if (currentPlotName===secretPlotFOD.plotName){
-    secretPlotFOD.plotBlog.push(blogEntry);
+    secretPlotFOD.plotBlog.push({plotter, message, dateTime});
   }
   else if (currentPlotName===secretPlotECO.plotName){
-    secretPlotECO.plotBlog.push(blogEntry);
+    secretPlotECO.plotBlog.push({plotter, message, dateTime});
   }
   else if (currentPlotName===secretPlotBNC.plotName){
-    secretPlotBNC.plotBlog.push(blogEntry);
+    secretPlotBNC.plotBlog.push({plotter, message, dateTime});
   }
   else if (currentPlotName===secretPlotNew.plotName){
-    secretPlotNew.plotBlog.push(blogEntry);
+    secretPlotNew.plotBlog.push({plotter, message, dateTime});
   }
 }
 //blogSaver
@@ -405,11 +405,12 @@ $(document).ready(function() {
     console.log("comment-on-plot");
     $("#add-new-blog-post").show();
     $("#blog-posts").show();
-    // need to change the 2 to currentBlog.length
+    // NOTE MORE COMMENTS?
     $(".blog-plotter1").text(currentBlog[parseInt(currentBlog.length)-1].plotter);
     $(".blog-message1").text(currentBlog[parseInt(currentBlog.length)-1].message);
     $(".blog-plotter2").text(currentBlog[parseInt(currentBlog.length)-2].plotter);
     $(".blog-message2").text(currentBlog[parseInt(currentBlog.length)-2].message);
+    //
     if (((currentBlog.length)-3)>=0) {
     $(".blog-plotter3").text(currentBlog[parseInt(currentBlog.length)-3].plotter);
     $(".blog-message3").text(currentBlog[parseInt(currentBlog.length)-3].message);
@@ -419,38 +420,37 @@ $(document).ready(function() {
     if (userName != "nobody") {
       $("#new-blog-post-user").val(userName);
     }
-    $("form#new-blog-post-submit").submit(function(event) {
-      event.preventDefault();
-      $("#plot-title").empty();
-      $(".find-plot-div").hide();
-      $("#add-profile").hide();
-      var newBlogPostUser = $("#new-blog-post-user").val();
-      var newBlogPost = $("#new-blog-post").val();
-      var newPlotBlog = [];
-      var nowRaw = new Date;
-      now = nowRaw.customFormat("#DD#/#MM#/#YY#");
-      console.log( now );
-      var blogEntryNew = new BlogEntry (newBlogPostUser, newBlogPost, now);
-      console.log(blogEntryNew);
-      newPlotBlog.push(blogEntryNew);
-      console.log(newPlotBlog);
-      blogSaver(currentPlot.plotName, blogEntryNew);
+  });
+  //go-to-this-blog button
 
-      $("#new-blog-entry").prepend('<p class="plotter-name">' +
-        blogEntryNew.plotter + '</p>'+ '<blockquote>' + '(' + now + ')  '+ ' ' + ' "<em>' + blogEntryNew.message + '"</em>' + '</blockquote>'
-      );
-      //prepend new blog entry
 
-      $("#new-blog-post-user").val("");
-      if (userName != "nobody") {
-        $("#new-blog-post-user").val(userName);
-      }
-      $("#new-blog-post").val("");
-      });
-      // new blog post submit
-    });
-    //go-to-this-blog button
-//
+  var newBlogPostUser;
+  var newBlogPost;
+  var newPlotBlog=[];
+  var nowRaw;
+  var blogEntryNew={};
+  $("form#new-blog-post-submit").submit(function(event) {
+    event.preventDefault();
+    $("#plot-title").empty();
+    $(".find-plot-div").hide();
+    $("#add-profile").hide();
+    newBlogPostUser = $("#new-blog-post-user").val();
+    newBlogPost = $("#new-blog-post").val();
+    newPlotBlog = [];
+    nowRaw = new Date;
+    now = nowRaw.customFormat("#MM#/#DD#/#YY#");
+    console.log( now );
+    blogSaver(currentPlot.plotName, newBlogPostUser, newBlogPost, now);
+    //blogSaver saves to correct plot //
+    $("#new-blog-entry").prepend('<p class="plotter-name">' +
+      newBlogPostUser + '</p>'+ '<blockquote>' + '(' + now + ')  '+ ' ' + ' "<em>' + newBlogPost + '"</em>' + '</blockquote>'
+    );
+    //prepend new blog entry
+
+    $("#new-blog-post").val("");
+  });
+  // new blog post submit
+// NOTE indentation?
   $("#message-board-button").click(function(){
     event.preventDefault();
     // $("#plot-title").hide();
@@ -461,37 +461,38 @@ $(document).ready(function() {
     console.log("comment-on-plot");
     $("#add-new-blog-post").show();
 
-    $("form#new-blog-post-submit").submit(function(event) {
-      event.preventDefault();
-      $("#plot-title").empty();
-      $(".find-plot-div").hide();
-      $("#add-profile").hide();
-      $(".blog-plotter1").text("");
-      $(".blog-message1").text("");
-      $(".blog-plotter2").text("");
-      $(".blog-message2").text("");
-      var newBlogPostUser = $("#new-blog-post-user").val();
-      var newBlogPost = $("#new-blog-post").val();
-      var newPlotBlog = [];
-      var blogEntryNew = new BlogEntry (newBlogPostUser, newBlogPost);
-      console.log(blogEntryNew);
-      newPlotBlog.push(blogEntryNew);
-      console.log(newPlotBlog);
-
-
-      $("#blog-posts").show();
-
-      $("#new-blog-entry").prepend('<p class="blog-poster">' +
-                                    blogEntryNew.plotter + '</p>' +
-                                    '<blockquote class="blog-entry">' + blogEntryNew.message + '</blockquote>'
-
-      );
-      //append new blog entry
-
-      $("#new-blog-post-user").val("");
-      $("#new-blog-post").val("");
-    });
-// new blog post submit
+// NOTE OTHER BLOG FORM NEEDSWORK FOR NEW BLOG ETC...
+//     $("form#new-blog-post-submit").submit(function(event) {
+//       event.preventDefault();
+//       $("#plot-title").empty();
+//       $(".find-plot-div").hide();
+//       $("#add-profile").hide();
+//       $(".blog-plotter1").text("");
+//       $(".blog-message1").text("");
+//       $(".blog-plotter2").text("");
+//       $(".blog-message2").text("");
+//       var newBlogPostUser = $("#new-blog-post-user").val();
+//       var newBlogPost = $("#new-blog-post").val();
+//       var newPlotBlog = [];
+//       var blogEntryNew = new BlogEntry (newBlogPostUser, newBlogPost);
+//       console.log(blogEntryNew);
+//       newPlotBlog.push(blogEntryNew);
+//       console.log(newPlotBlog);
+//
+//
+//       $("#blog-posts").show();
+//
+//       $("#new-blog-entry").prepend('<p class="blog-poster">' +
+//                                     blogEntryNew.plotter + '</p>' +
+//                                     '<blockquote class="blog-entry">' + blogEntryNew.message + '</blockquote>'
+//
+//       );
+//       //append new blog entry
+//
+//       $("#new-blog-post-user").val("");
+//       $("#new-blog-post").val("");
+//     });
+// // new blog post submit
   });
 //message board button
 });
