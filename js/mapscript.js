@@ -36,16 +36,40 @@ function SecretPlot(plotName, latitude, longitude, description, plotSize, produc
   this.plotBlog = blog;
 }
 
-function BlogEntry(plotter, message) {
+function BlogEntry(plotter, message, dateTime) {
   this.plotter = plotter;
   this.message = message;
+  this.dateTime = dateTime;
 }
 
-function blogSaver(currentPlotName) {
+function blogSaver(currentPlotName, blogEntry) {
   if (currentPlotName===secretPlotGCO.plotName){
-    
+    secretPlotGCO.plotBlog.push(blogEntry);
+  }
+  else if (currentPlotName===secretPlotPCUCC.plotName){
+    secretPlotPCUCC.plotBlog.push(blogEntry);
+  }
+  else if (currentPlotName===secretPlotSCO.plotName){
+    secretPlotSCO.plotBlog.push(blogEntry);
+  }
+  else if (currentPlotName===secretPlotGTCO.plotName){
+    secretPlotGTCO.plotBlog.push(blogEntry);
+  }
+  else if (currentPlotName===secretPlotFOD.plotName){
+    secretPlotFOD.plotBlog.push(blogEntry);
+  }
+  else if (currentPlotName===secretPlotECO.plotName){
+    secretPlotECO.plotBlog.push(blogEntry);
+  }
+  else if (currentPlotName===secretPlotBNC.plotName){
+    secretPlotBNC.plotBlog.push(blogEntry);
+  }
+  else if (currentPlotName===secretPlotNew.plotName){
+    secretPlotNew.plotBlog.push(blogEntry);
   }
 }
+//blogSaver
+
 var secretPlotGCO = new SecretPlot("Gabriel Community Orchard", 45.470266, -122.720072, 'Located adjacent to Gabriel Community Garden at 4151 SW Canby St in Southwest Portland, Gabriel Community Orchard is home to more than 40 mature fruit trees, the perfect orchard for any apple lover. ', 'big', [' apples', ' other'], [{plotter: 'Bob', message:'Im way down here!', dateTime: 0},{plotter: 'Tina', message: 'Ya me too!', dateTime: 0}]);
 
 var secretPlotPCUCC = new SecretPlot("Parkrose Community United Church of Christ", 45.534277, -122.533966, 'Parkrose Community Orchard is our fifth and newest orchard. Located on the property of Parkrose Community United Church of Christ, it is home to about 30 fruit trees and dozens of understory and native plants.', 'big',[' apples', ' other'],[{plotter: 'Bob', message:'Mmm native plants!', dateTime: 0},{plotter: 'Tina', message: 'Wow!', dateTime: 0}]);
@@ -381,10 +405,15 @@ $(document).ready(function() {
     console.log("comment-on-plot");
     $("#add-new-blog-post").show();
     $("#blog-posts").show();
-    $(".blog-plotter1").text(currentBlog[1].plotter);
-    $(".blog-message1").text(currentBlog[1].message);
-    $(".blog-plotter2").text(currentBlog[0].plotter);
-    $(".blog-message2").text(currentBlog[0].message);
+    // need to change the 2 to currentBlog.length
+    $(".blog-plotter1").text(currentBlog[parseInt(currentBlog.length)-1].plotter);
+    $(".blog-message1").text(currentBlog[parseInt(currentBlog.length)-1].message);
+    $(".blog-plotter2").text(currentBlog[parseInt(currentBlog.length)-2].plotter);
+    $(".blog-message2").text(currentBlog[parseInt(currentBlog.length)-2].message);
+    if (((currentBlog.length)-3)>=0) {
+    $(".blog-plotter3").text(currentBlog[parseInt(currentBlog.length)-3].plotter);
+    $(".blog-message3").text(currentBlog[parseInt(currentBlog.length)-3].message);
+    }
 
     /// userName to ease blog entry
     if (userName != "nobody") {
@@ -401,12 +430,11 @@ $(document).ready(function() {
       var nowRaw = new Date;
       now = nowRaw.customFormat("#DD#/#MM#/#YY#");
       console.log( now );
-      var blogEntryNew = new BlogEntry (newBlogPostUser, newBlogPost);
+      var blogEntryNew = new BlogEntry (newBlogPostUser, newBlogPost, now);
       console.log(blogEntryNew);
       newPlotBlog.push(blogEntryNew);
       console.log(newPlotBlog);
-
-      // $("#blog-posts").show(); // redundant
+      blogSaver(currentPlot.plotName, blogEntryNew);
 
       $("#new-blog-entry").prepend('<p class="plotter-name">' +
         blogEntryNew.plotter + '</p>'+ '<blockquote>' + '(' + now + ')  '+ ' ' + ' "<em>' + blogEntryNew.message + '"</em>' + '</blockquote>'
@@ -432,7 +460,6 @@ $(document).ready(function() {
     $("#add-profile").hide();
     console.log("comment-on-plot");
     $("#add-new-blog-post").show();
-    $("#")
 
     $("form#new-blog-post-submit").submit(function(event) {
       event.preventDefault();
