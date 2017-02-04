@@ -56,7 +56,6 @@
             <img class="img-responsive" src="images/p13.jpg" alt="">
             <div class="overlay">
               <h2>Add a Plot</h2>
-
             </div>
           </div>
         </div>
@@ -68,8 +67,9 @@
               <h2>Create a Profile</h2>
             </div>
           </div>
+          <!-- create-profile-button -->
         </div>
-
+        <!-- column -->
         <div class="col-sm-6 col-md-3">
           <div id="message-board-button" class="hover ehover1">
             <img class="img-responsive" src="images/p20.jpg" alt="">
@@ -94,14 +94,18 @@
     <div class="container">
       <div class="col-sm-12 col-md-6">
         <!-- Responsive iFrame -->
-        <div class="Flexible-container">
-            <div id="viewmap"></div>
+        <div id="map-and-search" class="Flexible-container">
+          <button id="search-plot-man-btn" type="button" name="button">Search for a plot w/o a map</button>
+            <div id="viewmap">
+          </div>
+          <!-- viewmap   -->
         </div>
         <!-- responsive iFrame -->
       </div>
       <!-- column map-->
       <div class="col-sm-12 col-md-6">
         <div class="find-plot-div">
+          <button id="go-to-this-blog" type="button" name="button">Go to this plot's blog!</button>
           <div id="garden-blog-description">
             <h3 id="plot-title2"></h3>
              <p>
@@ -116,15 +120,30 @@
               <li>plot size: <span id="plot-size"></span></li>
               <li>produce: <span id="plot-produce"></span></li>
             </ul>
-             <h4>Plot Blog</h4>
-             <p id="blog-plotter1" class="plotter-name"></p>
-             <blockquote id="blog-message1"></blockquote>
-             <p id="blog-plotter2" class="plotter-name"></p>
-             <blockquote id="blog-message2"></blockquote>
+            <h4>Plot Blog</h4>
+            <p class="blog-plotter1" class="plotter-name"></p>
+            <blockquote  class="blog-message1"></blockquote>
+            <p class="blog-plotter2"  class="plotter-name"></p>
+            <blockquote  class="blog-message2"></blockquote>
           </div>
           <!-- garden-blog-description-->
         </div>
         <!-- find-plot-div -->
+        <div id="add-new-blog-post">
+          <h2>Add a post:</h2>
+          <form id="new-blog-post-submit">
+            <div class="form-group">
+              <label for="new-blog-post-user">Enter your name:</label>
+              <input type="text" class="form-control" id="new-blog-post-user">
+            </div>
+            <div class="form-group">
+              <label for="new-blog-post">Comments:</label>
+              <input type="text" class="form-control" id="new-blog-post">
+            </div>
+            <button type="submit" class="btn">Add post</button>
+          </form>
+        </div>
+        <!-- add-new-blog-post -->
       </div>
       <!-- column plot description/stats/blog -->
 
@@ -169,7 +188,6 @@
               <label for="new-blog">Comments:</label>
               <input type="text" class="form-control" id="new-blog">
             </div>
-
             <button type="submit" class="btn">Add plot</button>
           </form>
         </div>
@@ -193,22 +211,27 @@
         <!-- column -->
       </div>
       <!-- add-provile -->
-      <div class="col-sm-12 col-md-6">
-        <div id="add-new-blog-post">
-          <h2>Add a post:</h2>
-          <form id="new-blog-post-submit">
-            <div class="form-group">
-              <label for="new-blog-post-user">Enter your name:</label>
-              <input type="text" class="form-control" id="new-blog-post-user">
-            </div>
-            <div class="form-group">
-              <label for="new-blog-post">Comments:</label>
-              <input type="text" class="form-control" id="new-blog-post">
-            </div>
 
-            <button type="submit" class="btn">Add post</button>
-          </form>
+      <div class="col-sm-12 col-md-6">
+          <div id="search-plot-manually">
+            <h2>Search a Plot Manually</h2>
+            <form id="plot-search-form" class="form-group">
+              <div class="form-group">
+                <label for="">Select a Plot-Blog</label>
+                <input class="form-control" type="radio" name="Portland, Or" value="portlandOr">
+                <input class="form-control" type="radio" name="Boston, Ma" value="bostonMa">
+                <input class="form-control" type="radio" name="Vancouver, Wa" value="vancouverWa">
+              </div>
+              <button type="submit">Search</button>
+            </form>
+          <div id="select-plot"class="form-group">
+            <button type="submit"></button>
+            <ul>
+              <li></li>
+            </ul>
+          </div>
         </div>
+        <!-- search-plot-manually -->
       </div>
       <!-- new blog post form column -->
 
@@ -222,6 +245,11 @@
              <h4>Plot Blog</h4>
              <span id="new-blog-entry">
              </span>
+             <p class="blog-plotter1 plotter-name"></p>
+             <blockquote  class="blog-message1"></blockquote>
+             <p class="blog-plotter2 plotter-name"></p>
+             <blockquote  class="blog-message2"></blockquote>
+
              <!-- <p id="blog-entry1" class="plotter-name"></p>
              <blockquote id="blog-post1"></blockquote> -->
           </div>
