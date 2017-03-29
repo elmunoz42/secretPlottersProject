@@ -29,7 +29,7 @@ Web-app that game-ifies guerrilla gardening with map functionality, garden plot 
 * jQuery
 * Bootstrap
 * git
-* GoogleMapsAPI (key: AIzaSyDRQ_rKHZRvaZAEBYDniQKYszwYZP9FgQI)
+* GoogleMapsAPI 
 
 ## Copyright (c)
 * 2017 Maggie Harrington, Stephanie Spears, Carlos Munoz Kampff
